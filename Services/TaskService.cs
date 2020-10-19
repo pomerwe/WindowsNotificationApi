@@ -60,8 +60,9 @@ namespace Windows_Notification_API.Services
     public bool IsInTime(Task t)
     {
       var hour = DateTime.Now.Hour;
+      var minute = DateTime.Now.Minute;
 
-      return t.Hour == hour;
+      return t.Hour == hour && t.Minute == minute;
     }
   }
 }
