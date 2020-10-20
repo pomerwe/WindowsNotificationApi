@@ -25,10 +25,21 @@ namespace Windows_Notification_API.Services
     {
       return dbContext.Tasks.AsNoTracking().ToList();
     }
+    public Task GetTask(int taskId)
+    {
+      return dbContext.Tasks.AsNoTracking().FirstOrDefault(t => t.TaskId == taskId);
+    }
+
 
     public Task AddOrUpdateTask(Task task)
     {
       return dbContext.AddOrUpdate(task);
+    }
+
+    public void DeleteTask(int taskId)
+    {
+      Task task = GetTask(taskId);
+      dbContext.TryDeleteEntity(task);
     }
 
     public void CheckIfTasksNeedNotification(object callback)

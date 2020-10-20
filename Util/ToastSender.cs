@@ -18,6 +18,8 @@ namespace Windows_Notification_API.Util
 
       var notifier = ToastNotificationManager.CreateToastNotifier("Windows Notification API");
       var notification = new ToastNotification(template);
+      notification.SuppressPopup = false;
+      notification.Priority = ToastNotificationPriority.High;
       notifier.Show(notification);
     }
   }

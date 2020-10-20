@@ -24,21 +24,76 @@ namespace Windows_Notification_API.Controllers
     }
 
     [HttpGet]
-    public IEnumerable<Task> Get()
+    public ActionResult<List<Task>> Get()
     {
-      return taskService.GetTasks();
+      try
+      {
+        return Ok(taskService.GetTasks());
+      }
+      catch (Exception ex)
+      {
+        return OnRequestFail(ex);
+      }
+      
+    }
+
+    [HttpGet("{taskId}")]
+    public ActionResult<Task> Get(int taskId)
+    {
+      try
+      {
+        return Ok(taskService.GetTask(taskId));
+      }
+      catch (Exception ex)
+      {
+        return OnRequestFail(ex);
+      }
+
     }
 
     [HttpPost]
     public ActionResult<Task> Post([FromBody] Task task)
     {
-      return Created("task", taskService.AddOrUpdateTask(task));
+      try
+      {
+        return Created("task", taskService.AddOrUpdateTask(task));
+      }
+      catch (Exception ex)
+      {
+        return OnRequestFail(ex);
+      }
     }
 
     [HttpPut]
     public ActionResult<Task> Put([FromBody] Task task)
     {
-      return Ok(taskService.AddOrUpdateTask(task));
+      try
+      {
+        return Ok(taskService.AddOrUpdateTask(task));
+      }
+      catch (Exception ex)
+      {
+        return OnRequestFail(ex);
+      }
+    }
+
+    [HttpDelete("{taskId}")]
+    public ActionResult Delete(int taskId)
+    {
+      try
+      {
+        taskService.DeleteTask(taskId);
+        return NoContent();
+      }
+      catch (Exception ex)
+      {
+        return OnRequestFail(ex);
+      }
+    }
+
+    public ActionResult OnRequestFail(Exception ex)
+    {
+      return BadRequest(ex.Message);
     }
 
   }
