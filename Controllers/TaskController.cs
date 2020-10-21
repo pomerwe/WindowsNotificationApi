@@ -37,7 +37,7 @@ namespace Windows_Notification_API.Controllers
       
     }
 
-    [HttpGet("{taskId}")]
+    [HttpGet("/{taskId}")]
     public ActionResult<Task> Get(int taskId)
     {
       try
@@ -91,7 +91,7 @@ namespace Windows_Notification_API.Controllers
       }
     }
 
-    public ActionResult OnRequestFail(Exception ex)
+    protected ActionResult OnRequestFail(Exception ex)
     {
       return BadRequest(ex.Message);
     }

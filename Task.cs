@@ -46,5 +46,17 @@ namespace Windows_Notification_API
       Hour = hour;
       Minute = minute;
     }
+
+    public DateTime ToTodayDateTime()
+    {
+      return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Hour, Minute, 0);
+    }
+
+    public bool IsInTime()
+    {
+      var hour = DateTime.Now.Hour;
+      var minute = DateTime.Now.Minute;
+      return Hour == hour && Minute == minute;
+    }
   }
 }

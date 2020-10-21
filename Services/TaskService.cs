@@ -49,8 +49,8 @@ namespace Windows_Notification_API.Services
         List<Task> tasks = context.Tasks.ToList();
         tasks.ForEach(t =>
         {
-          if(SendToastValidations(t))
-          { 
+          if(ToastNeedToBeSent(t))
+          {
             ToastSender.SendToast(t.TaskDescription);
             UpdateSentTask(t);
           }
@@ -59,23 +59,25 @@ namespace Windows_Notification_API.Services
       
     }
 
-    public bool SendToastValidations(Task t)
-    {
-      return IsInTime(t) && (t.LastSentNotification == null || (t.Daily && ((DateTime)t.LastSentNotification).Day < DateTime.Now.Day));
-    }
-
     public void UpdateSentTask(Task t)
     {
       t.LastSentNotification = DateTime.Now;
       AddOrUpdateTask(t);
     }
 
-    public bool IsInTime(Task t)
+    public bool ToastNeedToBeSent(Task t)
     {
-      var hour = DateTime.Now.Hour;
-      var minute = DateTime.Now.Minute;
+      bool appWasLaunchedAfterTaskTime = t.HourMinute.ToTodayDateTime() < DateTime.Now;
 
-      return t.Hour <= hour && t.Minute <= minute;
+      bool isTaskTime = t.HourMinute.IsInTime();
+
+      bool canTaskBeSent = (appWasLaunchedAfterTaskTime || isTaskTime) && t.Daily;
+
+      bool taskNeverSent = t.LastSentNotification == null;
+
+      bool isTaskNotSent = !taskNeverSent && ((DateTime)t.LastSentNotification).Day < DateTime.Now.Day;
+
+      return taskNeverSent || (canTaskBeSent && isTaskNotSent);
     }
   }
 }
