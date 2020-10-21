@@ -49,17 +49,19 @@ namespace Windows_Notification_API.Services
         List<Task> tasks = context.Tasks.ToList();
         tasks.ForEach(t =>
         {
-          if (IsInTime(t))
-          {
-            if (t.LastSentNotification == null || (t.Daily && ((DateTime)t.LastSentNotification).Day < DateTime.Now.Day))
-            {
-              ToastSender.SendToast(t.TaskDescription);
-              UpdateSentTask(t);
-            }
+          if(SendToastValidations(t))
+          { 
+            ToastSender.SendToast(t.TaskDescription);
+            UpdateSentTask(t);
           }
         });
       }
       
+    }
+
+    public bool SendToastValidations(Task t)
+    {
+      return IsInTime(t) && (t.LastSentNotification == null || (t.Daily && ((DateTime)t.LastSentNotification).Day < DateTime.Now.Day));
     }
 
     public void UpdateSentTask(Task t)
@@ -73,7 +75,7 @@ namespace Windows_Notification_API.Services
       var hour = DateTime.Now.Hour;
       var minute = DateTime.Now.Minute;
 
-      return t.Hour == hour && t.Minute == minute;
+      return t.Hour <= hour && t.Minute <= minute;
     }
   }
 }

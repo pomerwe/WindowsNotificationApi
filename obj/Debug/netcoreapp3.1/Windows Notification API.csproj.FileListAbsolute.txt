@@ -67,3 +67,4 @@ C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\NSw
 C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.csproj.CoreCompileInputs.cache
 C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.csprojAssemblyReference.cache
