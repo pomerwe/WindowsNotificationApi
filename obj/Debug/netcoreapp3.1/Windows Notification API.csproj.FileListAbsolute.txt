@@ -26,7 +26,6 @@ C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\run
 C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
 C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\Windows Notification API.deps.json
 C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\Windows Notification API.runtimeconfig.json
 C:\Users\estev\source\repos\Windows Notification API\bin\Debug\netcoreapp3.1\Windows Notification API.runtimeconfig.dev.json
@@ -67,3 +66,5 @@ C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\sta
 C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.dll
 C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.pdb
 C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.genruntimeconfig.cache
+C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\Windows Notification API.csprojAssemblyReference.cache
+C:\Users\estev\source\repos\Windows Notification API\obj\Debug\netcoreapp3.1\scopedcss\bundle\Windows Notification API.styles.css
